@@ -1,13 +1,73 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer base {
+  * {
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  html {
+    font-family: Poppins;
+    scroll-behavior: smooth;
+  }
+}
+@layer components {
+
+  
+  /* Navbar Responsive Start */
+  @media (max-width: 768px) {
+    #menu-btn {
+      display: inline-block;
+    }
+    .header .navbar {
+      position: absolute;
+      top: 99%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-top: 0.1rem solid #756aee;
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    .header .navbar.active {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    #menu-btn.fa-times {
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+    }
+
+    .navbar li {
+      width: 100%;
+      margin-bottom: 2px;
+    }
+    .header .navbar ul li a:hover {
+      background: #756aee;
+      color: #fff;
+      -webkit-transform: none;
+    }
+    .activeLink {
+      background: #756aee;
+      color: #fff;
+    }
+  }
+  /* Navbar Responsive End */
+
+  .btn {
+    @apply px-9 py-3 text-base font-medium inline-block uppercase bg-primary  text-white hover:bg-white hover:text-grayDark border-2 hover:border-2 hover:border-grayDark;
+  }
+  .navLink {
+    @apply text-xl capitalize text-gray p-3 block md:hover:text-primary;
+  }
+  .activeLink {
+    @apply text-xl capitalize md:text-primary p-3 block;
+  }
+  .title {
+    @apply md:text-5xl text-4xl text-grayDark text-center my-12 block;
+  }
 }
